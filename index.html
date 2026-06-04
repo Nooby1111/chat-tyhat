@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>chat</title>
+
+</head>
+<body>
+    <h1>tyhat</h1>
+    <p>This is a simple web page with no AI!</p>
+    <div id="chatOutput" style="white-space: pre-wrap; display:block; width:100%; min-height:80px; border:1px solid rgb(9, 255, 0); padding:10px; margin-bottom:10px;"></div>
+    <textarea
+        id="chatInput"
+        placeholder="Type your message here..."
+        rows="4"
+        cols="50"
+    ></textarea>
+    
+    <button id="sendButton">Send</button>
+    <script>
+        const messages = [];
+        const chatInput = document.getElementById('chatInput');
+        const chatOutput = document.getElementById('chatOutput');
+        const sendButton = document.getElementById('sendButton');
+
+        sendButton.addEventListener('click', function() {
+            const message = chatInput.value;
+            if (message.trim() !== '') {
+                messages.push(message);
+                chatOutput.textContent = messages.join('\n');
+                console.log('Messages:', messages);
+                chatInput.value = ''; // Clear the input after sending  
+                if (messages.length > 10) {
+                    messages.shift(); // Remove the oldest message if there are more than 10 messages
+                }
+            }
+        });
+    </script>
+    <style>
+        /* CSS styles can be added here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+                background-color: #000000;
+                color: rgb(9, 255, 0);
+        }
+        #chatInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: rgb(9, 255, 0);
+             background-color: #000000;
+        }
+        #sendButton {
+            padding: 10px 20px;
+            color: rgb(9, 255, 0);
+            background-color: #000000; 
+            Border: 1px solid rgb(9, 255, 0);
+            border-radius: 10px;
+        }
+        #sendButton:hover {
+            background-color: rgb(9, 255, 0);
+            color: #000000;
+            box-shadow: 0 0 10px rgb(9, 255, 0);
+            border-radius: 100px;
+        }
+    </style>
+</body>
+</html>
